@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Descrição:
 
-## Getting Started
+Este projeto implementa um sistema completo de fila SQS com API e front-end para processar mensagens.
 
-First, run the development server:
+Requisitos:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ter o AWS CLI instalado e configurado com credenciais válidas.
+Node.js instalado.
+Setup:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Backend:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Abra o terminal no diretório convem-desafio.
+Instale as dependências com npm install.
+Configure as credenciais da AWS no arquivo utils/aws.js.
+Inicie o servidor de fila SQS com node index.js.
+Envie 100 mensagens para a fila com node post-api.
+2. Frontend:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Abra o terminal no diretório convem-front-end.
+Instale as dependências com npm install.
+Inicie o servidor de desenvolvimento com npm run dev.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Funcionamento:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+As mensagens são enviadas para a fila SQS através da API.
+A API ativa um trigger no Lambda.
+A função Lambda processa a mensagem e a adiciona ao DynamoDB.
+O servidor SQS processa as mensagens em segundo plano.
+O front-end exibe as mensagens processadas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O resultado deve ser assim:
+![alt text](ex.png)
